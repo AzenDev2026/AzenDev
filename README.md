@@ -14,7 +14,7 @@ the **NVazen / Azen** operating system and the **Azen Dynamic** software ecosyst
 
 ---
 
-## 🏛️ Organization Structure
+##  Organization Structure
 
 
 | Layer | Name | Description |
