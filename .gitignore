@@ -1,0 +1,24 @@
+# ===== Python =====
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+myenv/
+
+# ===== 运行 / 构建产物 =====
+*.log
+*.class
+out/
+err.txt
+out.txt
+
+# ===== CMake / C++ =====
+build/
+cmake-build-*/
+
+# ===== 编辑器 / 系统 =====
+.vscode/
+.idea/
+*.swp
+.DS_Store
