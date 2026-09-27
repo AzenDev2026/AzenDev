@@ -22,6 +22,23 @@ def _run(cmd: list[str], timeout: int = 5) -> tuple[bool, str]:
         return False, "命令超时"
 
 
+def _run_input(cmd: list[str], stdin_text: str, timeout: int = 30) -> tuple[bool, str]:
+    """执行命令，并把 stdin_text 喂给它的标准输入。
+
+    用于传递密码这类敏感信息：走 stdin 不会出现在进程参数里，
+    同机其他用户执行 `ps` 时看不到。
+    """
+    try:
+        proc = subprocess.run(
+            cmd, input=stdin_text, capture_output=True, text=True, timeout=timeout
+        )
+        return proc.returncode == 0, (proc.stdout + proc.stderr).strip()
+    except FileNotFoundError:
+        return False, f"命令不存在: {cmd[0]}"
+    except subprocess.TimeoutExpired:
+        return False, "命令超时"
+
+
 # ---------- 亮度 ----------
 
 def brightness_available() -> bool:
@@ -198,11 +215,18 @@ def wifi_scan() -> list[dict]:
 
 
 def wifi_connect(ssid: str, password: str = "") -> tuple[bool, str]:
-    cmd = ["nmcli", "device", "wifi", "connect", ssid]
-    if password:
-        cmd += ["password", password]
-    ok, out = _run(cmd, timeout=30)
-    return ok, out
+    """连接 Wi-Fi。
+
+    密码通过 stdin 交给 nmcli --ask，绝不作为命令行参数 ——
+    否则密码会留在 argv 里，同机任何用户 `ps` 一下就能看到明文。
+    """
+    if not password:
+        return _run(["nmcli", "device", "wifi", "connect", ssid], timeout=30)
+    return _run_input(
+        ["nmcli", "--ask", "device", "wifi", "connect", ssid],
+        password + "\n",
+        timeout=30,
+    )
 
 
 def wifi_disconnect(ssid: str):

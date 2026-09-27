@@ -831,7 +831,9 @@ def run_update(parent=None):
     elif terminal == "gnome-terminal":
         subprocess.Popen(["gnome-terminal", "--", *cmd])
     else:
-        subprocess.Popen([terminal, "-e", " ".join(cmd)])
+        # 不要把 argv 用 " ".join 压成一个字符串交给终端重新分词：
+        # 任何含空格的参数（带空格的 Wi-Fi SSID、路径等）都会被拆断。
+        subprocess.Popen([terminal, "-e", *cmd])
 
 
 # ---------- 侧边栏 ----------
