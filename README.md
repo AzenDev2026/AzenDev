@@ -30,7 +30,7 @@ Azen is a project with two parts:
 
 | Part | Description |
 |------|-------------|
-| **Azen OS / NVazen** | A Linux distribution based on Arch Linux, focused on elegance and performance |
+| **Azen Linux / NVazen** | A Linux distribution based on Arch Linux, focused on elegance and performance |
 | **Azen Dynamic** | Software ecosystem including ALRM, ALPRM, AlreSearch, Wtml, and KDE Setting Shell |
 
 ---
@@ -57,7 +57,7 @@ Built on Arch Linux, featuring:
 | **ALRM** | Azen Laptop Resources Management — App Nap, Deep Sleep, Resource Optimization |  Stable |
 | **ALPRM** | Azen Laptop Power Resources Management — next-gen sleep stack replacement |  In development |
 | **AlreSearch** | System file search engine |  Early test |
-| **Wtml** | Terminal tool for web template markup |  Early test |
+| **Wtml** | Terminal tool  |  Early test |
 | **KDE Setting Shell** | Alternative settings UI for KDE Plasma with a Windows 11-inspired design |  In development |
 
 ### ALRM — Azen Laptop Resources Management
@@ -90,7 +90,7 @@ A replacement shell for the native KDE Plasma system settings. It provides a cle
 |--------|-------------|
 | `AzenDynamic/` | Software ecosystem (ALRM, ALPRM, AlreSearch, Wtml, KDE Setting Shell) |
 | `AlreSearch/` | Alre search engine (early test) |
-| `Wtml/` | Web template markup language |
+| `Wtml/` | terminal |
 | `assets/` | Project assets |
 | `screenshot/` | Screenshots |
 | `issues/` | Issue tracking |
