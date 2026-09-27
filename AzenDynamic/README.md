@@ -65,7 +65,7 @@ See [AlreSearch/README.md](AlreSearch/README.md) for details.
 
 ## Wtml — Terminal Tool
 
-Wtml is a terminal-based tool for web template markup. It is
+Wtml is a terminal-based tool. It is
 currently in early development.
 
 See [Wtml/README.md](Wtml/README.md) for details.
@@ -76,6 +76,7 @@ See [Wtml/README.md](Wtml/README.md) for details.
 AzenDynamic/
 ├── README.md
 ├── alrm3
+├── kde-setting-shell
 ├── alprm(test)
 ├── AlreSearch/
 └── Wtml/
