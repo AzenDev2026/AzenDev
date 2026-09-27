@@ -7,7 +7,7 @@
   版本:   3.0.0
   许可:   GPLv3
   官网:   https://azen.dev
-  仓库:   https://github.com/AzenOS/Azen_dev
+  仓库:   https://github.com/AzenDev2026/AzenDev
 
 ================================================================
   简介
@@ -190,7 +190,7 @@ v2.0.0 (2026-08)
 ================================================================
 
   Email:  zitingliang18@gmail.com
-  GitHub: https://github.com/AzenOS/Azen_dev
+  GitHub: https://github.com/AzenDev2026/AzenDev
   Website: https://azen.dev
 
 ================================================================

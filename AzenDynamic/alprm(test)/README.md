@@ -42,12 +42,15 @@ It is **read-only** and safe to run.
 ### Install Dependencies
 
 ```bash
+# Arch Linux
 sudo pacman -S gcc systemd-libs
-debian/ubuntu
+
+# Debian / Ubuntu
 sudo apt install gcc libsystemd-dev
 
-git clone https://github.com/AzenDev2026/Azen_dev.git
-cd Azen_dev/alprm-monitor
+# Build
+git clone https://github.com/AzenDev2026/AzenDev.git
+cd "AzenDev/AzenDynamic/alprm(test)"
 
 make
 

@@ -7,7 +7,7 @@
   Version:  3.0.0
   License:  GPLv3
   Website:  https://azen.dev
-  Repo:     https://github.com/AzenOS/Azen_dev
+  Repo:     https://github.com/AzenDev2026/AzenDev
 
 ================================================================
   Overview
@@ -193,7 +193,7 @@ v2.0.0 (2026-08)
 ================================================================
 
   Email:   zitingliang18@gmail.com
-  GitHub:  https://github.com/AzenOS/Azen_dev
+  GitHub:  https://github.com/AzenDev2026/AzenDev
   Website: https://azen.dev
 
 ================================================================
