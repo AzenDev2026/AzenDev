@@ -41,12 +41,13 @@ sudo pacman -S brightnessctl wireplumber networkmanager bluez bluez-utils \
 
 ## Install
 
+Clone this repository, then run the installer from the `kde-setting-shell` directory:
+
 ```bash
 git clone https://github.com/AzenDev2026/AzenDev.git
 cd AzenDev/AzenDynamic/kde-setting-shell
-
+chmod +x install.sh
 ./install.sh
-```
 
 `install.sh` creates the `myenv/` virtual environment, installs PyQt6, and
 writes a desktop entry to `~/.local/share/applications/`. Re-running it is safe.
