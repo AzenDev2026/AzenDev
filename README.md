@@ -10,9 +10,7 @@ the **NVazen / Azen** operating system and the **Azen Dynamic** software ecosyst
 
 [![License: GPL v3](https://img.shields.io/badge/License-GPLv3-orange.svg)](https://www.gnu.org/licenses/gpl-3.0)
 [![Website](https://img.shields.io/badge/Website-azen.dev-blue)](https://azen.dev)
-[![GitHub](https://img.shields.io/badge/GitHub-AzenDev2026-black)](https://github.com/AzenDev2026/Azen_dev)
-
-> A modern Linux distribution and software ecosystem for older laptops.
+[![GitHub](https://img.shields.io/badge/GitHub-AzenDev2026-black)](https://github.com/AzenDev2026/AzenDev)
 
 ---
 
@@ -47,8 +45,13 @@ Built on Arch Linux, featuring:
 
 - Upgraded ALRM technology (C++ edition)
 - Modern UI with soft rounded corners
-- Deep sleep & App Nap
+- App Nap & safe sleep-mode selection
 - Privacy-first: no telemetry
+
+> **Known issue — fixed on `main`:** the ALRM `deep` sleep mode can leave
+> some laptops (e.g. Dell XPS 13) unable to resume after the lid is closed.
+> The current source prefers `s2idle` for every mode and power state.
+> See [AzenDynamic/alrm3/WARNING.md](AzenDynamic/alrm3/WARNING.md).
 
 ---
 
@@ -58,7 +61,7 @@ Built on Arch Linux, featuring:
 
 | Project | Description | Status |
 |---------|-------------|--------|
-| **ALRM** | Azen Laptop Resources Management — App Nap, Deep Sleep, Resource Optimization |  Stable |
+| **ALRM** | Azen Laptop Resources Management — App Nap, safe sleep-mode selection, Resource Optimization |  Stable |
 | **ALPRM** | Azen Laptop Power Resources Management — next-gen sleep stack replacement |  In development |
 | **AlreSearch** | System file search engine |  Early test |
 | **Wtml** | Terminal tool  |  Early test |
@@ -69,7 +72,7 @@ Built on Arch Linux, featuring:
 ALRM is our exclusive technology for older laptops:
 
 - **App Nap** — Freezes idle background apps to save CPU & power
-- **Deep Sleep** — Cuts hardware power on lid close, fast wake
+- **Safe sleep modes** — Picks a sleep mode the hardware can actually resume from
 - **Resource Optimization** — Dynamic priority for background processes
 
 ### ALPRM — Azen Laptop Power Resources Management
@@ -92,9 +95,8 @@ A replacement shell for the native KDE Plasma system settings. It provides a cle
 
 | Folder | Description |
 |--------|-------------|
-| `AzenDynamic/` | Software ecosystem (ALRM, ALPRM, AlreSearch, Wtml, KDE Setting Shell) |
-| `AlreSearch/` | Alre search engine (early test) |
-| `Wtml/` | terminal |
+| `AzenDynamic/` | Software ecosystem (ALRM, ALPRM, AlreSearch, KDE Setting Shell) |
+| `Wtml/` | Winzer Terminal (early test) |
 | `assets/` | Project assets |
 | `screenshot/` | Screenshots |
 | `issues/` | Issue tracking |
@@ -111,7 +113,7 @@ GPLv3 — see [LICENSE](LICENSE)
 
 -  Website: [azen.dev](https://azen.dev)
 -  Email: zitingliang18@gmail.com
--  GitHub: [AzenDev2026/Azen_dev](https://github.com/AzenDev2026/Azen_dev)
+-  GitHub: [AzenDev2026/AzenDev](https://github.com/AzenDev2026/AzenDev)
 
 ---
 
