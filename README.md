@@ -1,5 +1,4 @@
-# NVazen™ / Azen™
-<img width="569" height="192" alt="NVazentm" src="https://github.com/user-attachments/assets/d7e39495-6806-4b0c-b506-041ec9e2d632" />
+# NVazen™ / Azen™ 
 
 <img width="2560" height="1600" alt="Screenshot_20260927_121833" src="https://github.com/user-attachments/assets/98df16ad-dfec-4bb9-b976-5e8aef64ed95" />
 
