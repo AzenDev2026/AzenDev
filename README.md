@@ -8,8 +8,8 @@ Azen is a project under **白企 Whitent**, organized as two product lines:
 the **NVazen / Azen** operating system and the **Azen Dynamic** software ecosystem.
 <img width="2560" height="1600" alt="Screenshot_20260927_121833" src="https://github.com/user-attachments/assets/b74ef910-b80e-4252-88f6-9c4a3ec59276" />
 
-[![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)
-[![Website](https://img.shields.io/badge/Website-azen.dev-brightgreen)](https://azen.dev)
+[![License: GPL v3](https://img.shields.io/badge/License-GPLv3-orange.svg)](https://www.gnu.org/licenses/gpl-3.0)
+[![Website](https://img.shields.io/badge/Website-azen.dev-blue)](https://azen.dev)
 [![GitHub](https://img.shields.io/badge/GitHub-AzenDev2026-black)](https://github.com/AzenDev2026/Azen_dev)
 
 > A modern Linux distribution and software ecosystem for older laptops.
