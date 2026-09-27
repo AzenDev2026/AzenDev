@@ -1,5 +1,5 @@
 {logo_path} :
-/home/admin/icon2.png
+../../assets/icons/icon2.png
 
 {system_version} :
 name: NVazen 2.0
