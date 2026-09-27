@@ -1,7 +1,8 @@
 # NVazen™ / Azen™
 <img width="569" height="192" alt="NVazentm" src="https://github.com/user-attachments/assets/d7e39495-6806-4b0c-b506-041ec9e2d632" />
 
-<img width="2560" height="1600" alt="Screenshot_20260927_121833" src="https://github.com/user-attachments/assets/6ed1b153-f484-46c5-b375-0041c4f19e61" />
+<img width="2560" height="1600" alt="Screenshot_20260927_121833" src="https://github.com/user-attachments/assets/98df16ad-dfec-4bb9-b976-5e8aef64ed95" />
+
 
 [![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)
 [![Website](https://img.shields.io/badge/Website-azen.dev-brightgreen)](https://azen.dev)
@@ -11,24 +12,8 @@
 
 ---
 
-##  Organization Structure
+## 🏛️ Organization Structure
 
-Azen is a project under **白企 Whitent**, organized as follows:
-
-```
-白企 Whitent
-│
-└── Azen Project
-    │
-    ├── NVazen / Azen          ← Operating System
-    │   (No sub-projects)
-    │
-    └── Azen Dynamic           ← Software Ecosystem
-        ├── ALRM               (Azen Laptop Resources Management)
-        ├── ALPRM              (Azen Laptop Power Resources Management)
-        ├── AlreSearch         (System file search engine)
-        └── Wtml               (Terminal tool)
-```
 
 | Layer | Name | Description |
 |-------|------|-------------|
@@ -46,7 +31,7 @@ Azen is a project with two parts:
 | Part | Description |
 |------|-------------|
 | **Azen OS / NVazen** | A Linux distribution based on Arch Linux, focused on elegance and performance |
-| **Azen Dynamic** | Software ecosystem including ALRM, ALPRM, AlreSearch, and Wtml |
+| **Azen Dynamic** | Software ecosystem including ALRM, ALPRM, AlreSearch, Wtml, and KDE Setting Shell |
 
 ---
 
@@ -73,6 +58,7 @@ Built on Arch Linux, featuring:
 | **ALPRM** | Azen Laptop Power Resources Management — next-gen sleep stack replacement |  In development |
 | **AlreSearch** | System file search engine |  Early test |
 | **Wtml** | Terminal tool for web template markup |  Early test |
+| **KDE Setting Shell** | Alternative settings UI for KDE Plasma with a Windows 11-inspired design |  In development |
 
 ### ALRM — Azen Laptop Resources Management
 
@@ -89,7 +75,12 @@ The next generation of ALRM, aiming to replace the system's sleep stack with a u
 Current progress:
 
 -  **Monitoring Layer (C)** — Listens to lid, power button, and D-Bus sleep events
+-  **Decision Layer (Rust)** — State machine, permission checks, handoff logs
 -  **Execution Layer (C + Rust)** — Freeze processes, switch sleep modes, control hardware
+
+### KDE Setting Shell
+
+A replacement shell for the native KDE Plasma system settings. It provides a cleaner, more modern interface inspired by Windows 11, while keeping the underlying KDE functionality intact.
 
 ---
 
@@ -97,7 +88,7 @@ Current progress:
 
 | Folder | Description |
 |--------|-------------|
-| `AzenDynamic/` | Software ecosystem (ALRM, ALPRM, AlreSearch, Wtml) |
+| `AzenDynamic/` | Software ecosystem (ALRM, ALPRM, AlreSearch, Wtml, KDE Setting Shell) |
 | `AlreSearch/` | Alre search engine (early test) |
 | `Wtml/` | Web template markup language |
 | `assets/` | Project assets |
@@ -118,6 +109,6 @@ GPLv3 — see [LICENSE](LICENSE)
 -  Email: zitingliang18@gmail.com
 -  GitHub: [AzenDev2026/Azen_dev](https://github.com/AzenDev2026/Azen_dev)
 
----   README.md = update 13
+---
 
 **© 2026 白企 Whitent / Azen Project**
