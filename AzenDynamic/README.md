@@ -1,4 +1,4 @@
-# Azen Dynamic           <img align="right" width="50" height="50" alt="office_blue_gradient" src="https://github.com/user-attachments/assets/600198a5-e274-454f-82bb-3d2c595635a0" />
+# Azen Dynamic           <img width="50" height="50" alt="office_blue_gradient" src="https://github.com/user-attachments/assets/600198a5-e274-454f-82bb-3d2c595635a0" />
 
 
 Azen Dynamic is the software ecosystem branch of the Azen project.
