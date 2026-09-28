@@ -1,6 +1,8 @@
 
   # ALRM v3 (Azen Laptop Resources Management)
   ## C++ Edition · Built for NVazen 2.0
+  <img width="2560" height="1600" alt="Screenshot_20260928_150357" src="https://github.com/user-attachments/assets/7a3292e0-0e68-470e-80d7-cdc1f0ef2d5c" />
+
   
   Author:   Ziting Liang (Azen Project)
   Version:  3.0.0
