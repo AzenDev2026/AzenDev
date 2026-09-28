@@ -119,8 +119,8 @@ GPLv3 — see [LICENSE](LICENSE)
 
 ## Contributors
 
-- **[Ziting Liang](https://github.com/AzenDev2026)** — creator and maintainer
-- **[Lobe AI](https://app.lobehub.com/agent/agt_2vQV2CvZbyyw)** — AI coding assistant (bug fixes, documentation, packaging)
+- [Ziting Liang](https://github.com/AzenDev2026) — creator and maintainer
+- [qianning] — AI coding assistant (bug fixes, documentation, packaging)
 
 AI-assisted commits are marked with an `Assisted-by: Lobe AI` trailer.
 
