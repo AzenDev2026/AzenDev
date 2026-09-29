@@ -1,52 +1,32 @@
-#ifndef ALRM_CONFIG_PARSER_HPP
-#define ALRM_CONFIG_PARSER_HPP
+#pragma once
 
 #include <string>
-#include <vector>
+#include <cstdint>
 
 namespace alrm {
 
 struct Config {
-    // 电池管理
-    int battery_low = 20;
-    int battery_critical = 10;
+    // 进程监控
+    bool        monitor_enabled      = true;
+    int         monitor_interval_sec = 5;
 
-    // 温度管理
-    int temp_warn = 75;
-    int temp_critical = 85;
-
-    // 调度
-    int scan_interval = 5;
-
-    // AppNap
-    bool enable_app_nap = true;
-    int cpu_threshold = 20;
-    int freeze_timeout = 30;
-    std::vector<std::string> whitelist;
+    // App Nap
+    bool        app_nap_enabled      = true;
+    int         app_nap_idle_sec     = 300;
 
     // 日志
-    bool verbose = false;
-
-    // 综合判断：是否处于性能模式
-    bool is_performance_mode() const {
-        return battery_low > 0 && battery_critical > 0;
-    }
+    std::string log_path             = "/var/log/azen-alrm.log";
+    bool        log_to_console       = true;
 };
 
-class ConfigParser {
-public:
-    ConfigParser() = default;
+// 从配置文件加载配置
+// 默认路径：/etc/azen/Azen-ALRM.conf
+Config load(const std::string& path = "/etc/azen/Azen-ALRM.conf");
 
-    // 加载配置文件，成功返回 true
-    bool load(const std::string& path = "/etc/azen-alrm/Azen-ALRM.conf");
+// 解析单行 key=value，成功返回 true
+bool parseLine(const std::string& line, std::string& key, std::string& value);
 
-    // 获取解析结果
-    const Config& get() const { return config_; }
-
-private:
-    Config config_;
-};
+// 去掉字符串两端的空白
+std::string trim(const std::string& s);
 
 } // namespace alrm
-
-#endif // ALRM_CONFIG_PARSER_HPP
