@@ -1,22 +1,20 @@
 [Unit]
-Description=ALRM - Azen Laptop Resources Management (C++ Edition)
-After=graphical.target multi-user.target
-Wants=graphical.target
+Description=Azen ALRM - 自适应资源与延迟管理器 (v3)
+After=network.target
 
 [Service]
 Type=simple
-ExecStart=/usr/local/bin/alrm /etc/azen/Azen-ALRM.conf
+ExecStart=/usr/local/bin/azen-alrm
 Restart=on-failure
-RestartSec=10
+RestartSec=5
 
-# 资源限制（C++ 版本占用极低）
-CPUQuota=5%
-MemoryMax=20M
+# 权限
+ReadWritePaths=/var/log
 
 # 安全加固
 NoNewPrivileges=true
 ProtectSystem=strict
-ReadWritePaths=/sys/power /var/log
+ProtectHome=true
 
 [Install]
-WantedBy=graphical.target
+WantedBy=multi-user.target
