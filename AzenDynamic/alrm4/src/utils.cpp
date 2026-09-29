@@ -1,6 +1,7 @@
 #include "utils.hpp"
 #include <ctime>
 #include <iomanip>
+#include <cstdio> 
 
 namespace alrm {
 
