@@ -1,20 +1,12 @@
 [Unit]
-Description=Azen ALRM - 自适应资源与延迟管理器 (v3)
+Description=Azen ALRM 资源管理服务 (v4)
 After=network.target
 
 [Service]
 Type=simple
-ExecStart=/usr/local/bin/azen-alrm
+ExecStart=/usr/local/bin/alrm
 Restart=on-failure
 RestartSec=5
-
-# 权限
-ReadWritePaths=/var/log
-
-# 安全加固
-NoNewPrivileges=true
-ProtectSystem=strict
-ProtectHome=true
 
 [Install]
 WantedBy=multi-user.target
