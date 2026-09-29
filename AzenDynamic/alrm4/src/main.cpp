@@ -53,7 +53,7 @@ int main(int argc, char** argv) {
     (void)argc;
     (void)argv;
 
-    log(LogLevel::INFO, "Azen ALRM v3.0.0 启动");
+    log(LogLevel::INFO, "Azen ALRM v4.0.0 boot");
 
     // 加载配置
     ConfigParser parser;
