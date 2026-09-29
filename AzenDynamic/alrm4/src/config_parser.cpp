@@ -1,89 +1,74 @@
 #include "config_parser.hpp"
-#include "utils.hpp"
 
 #include <fstream>
 #include <sstream>
+#include <algorithm>
+#include <cctype>
 
 namespace alrm {
 
-namespace {
-
-// 去掉首尾空白（含 \r \n \t 空格）
 std::string trim(const std::string& s) {
-    const char* ws = " \t\r\n";
-    const auto begin = s.find_first_not_of(ws);
-    if (begin == std::string::npos) return "";
-    const auto end = s.find_last_not_of(ws);
-    return s.substr(begin, end - begin + 1);
+    auto begin = s.begin();
+    while (begin != s.end() && std::isspace(static_cast<unsigned char>(*begin))) {
+        ++begin;
+    }
+    auto end = s.end();
+    while (end != begin && std::isspace(static_cast<unsigned char>(*(end - 1)))) {
+        --end;
+    }
+    return std::string(begin, end);
 }
 
-} // anonymous namespace
+bool parseLine(const std::string& line, std::string& key, std::string& value) {
+    std::string trimmed = trim(line);
 
-bool ConfigParser::load(const std::string& path) {
+    // 空行或注释
+    if (trimmed.empty() || trimmed[0] == '#') {
+        return false;
+    }
+
+    auto pos = trimmed.find('=');
+    if (pos == std::string::npos) {
+        return false;
+    }
+
+    key   = trim(trimmed.substr(0, pos));
+    value = trim(trimmed.substr(pos + 1));
+    return !key.empty();
+}
+
+Config load(const std::string& path) {
+    Config cfg;
+
     std::ifstream file(path);
     if (!file.is_open()) {
-        log(LogLevel::ERROR, "无法打开配置文件: " + path);
-        return false;
+        // 配置文件缺失时直接返回默认值
+        return cfg;
     }
 
     std::string line;
     while (std::getline(file, line)) {
-        // 去掉行尾 \r（CRLF 兼容）
-        if (!line.empty() && line.back() == '\r') {
-            line.pop_back();
-        }
-
-        line = trim(line);
-
-        // 跳过空行与注释
-        if (line.empty() || line[0] == '#') {
+        std::string key, value;
+        if (!parseLine(line, key, value)) {
             continue;
         }
 
-        // 按第一个 '=' 切分
-        const auto pos = line.find('=');
-        if (pos == std::string::npos) {
-            continue;
-        }
-
-        std::string key = trim(line.substr(0, pos));
-        std::string value = trim(line.substr(pos + 1));
-
-        if (key == "BATTERY_LOW") {
-            config_.battery_low = std::stoi(value);
-        } else if (key == "BATTERY_CRITICAL") {
-            config_.battery_critical = std::stoi(value);
-        } else if (key == "TEMP_WARN") {
-            config_.temp_warn = std::stoi(value);
-        } else if (key == "TEMP_CRITICAL") {
-            config_.temp_critical = std::stoi(value);
-        } else if (key == "SCAN_INTERVAL") {
-            config_.scan_interval = std::stoi(value);
-        } else if (key == "ENABLE_APP_NAP") {
-            config_.enable_app_nap = (value == "true" || value == "1");
-        } else if (key == "CPU_THRESHOLD") {
-            config_.cpu_threshold = std::stoi(value);
-        } else if (key == "FREEZE_TIMEOUT") {
-            config_.freeze_timeout = std::stoi(value);
-        } else if (key == "WHITELIST") {
-            config_.whitelist.clear();
-            if (!value.empty()) {
-                for (auto& item : split(value, ',')) {
-                    const std::string t = trim(item);
-                    if (!t.empty()) {
-                        config_.whitelist.push_back(t);
-                    }
-                }
-            }
-        } else if (key == "VERBOSE") {
-            config_.verbose = (value == "true" || value == "1");
-        } else {
-            log(LogLevel::WARN, "未知配置项: " + key);
+        if (key == "monitor_enabled") {
+            cfg.monitor_enabled = (value == "true" || value == "1");
+        } else if (key == "monitor_interval_sec") {
+            cfg.monitor_interval_sec = std::stoi(value);
+        } else if (key == "app_nap_enabled") {
+            cfg.app_nap_enabled = (value == "true" || value == "1");
+        } else if (key == "app_nap_idle_sec") {
+            cfg.app_nap_idle_sec = std::stoi(value);
+        } else if (key == "log_path") {
+            cfg.log_path = value;
+        } else if (key == "log_to_console") {
+            cfg.log_to_console = (value == "true" || value == "1");
         }
     }
 
-    log(LogLevel::INFO, "配置加载完成: " + path);
-    return true;
+    return cfg;
 }
 
 } // namespace alrm
