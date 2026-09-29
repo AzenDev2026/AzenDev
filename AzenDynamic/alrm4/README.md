@@ -1,14 +1,14 @@
 
-# ALRM v3 (Azen Laptop Resources Management)
+# ALRM 4 (Azen Laptop Resources Management)
 
-## C++ Edition · Built for NVazen 2.0
+## C++ Edition · Built for NVazen series
 <img width="2560" height="1600" alt="Screenshot_20260928_150357" src="https://github.com/user-attachments/assets/65264c1d-a2f9-47b1-9eac-ccccd0ff8d83" />
 
 [![Website](https://img.shields.io/badge/website-azen.dev-4f9cf9?style=flat-square)](https://azen.dev)
 [![GitHub](https://img.shields.io/badge/github-AzenDev2026-181717?style=flat-square&logo=github)](https://github.com/AzenDev2026/AzenDev)
 
 Author:   Ziting Liang (Azen Project)
-Version:  3.0.0
+Version:  4.0.0
 License:  GPLv3
 
 ## Overview
@@ -18,9 +18,8 @@ management technology developed by the Azen Project. It is
 designed specifically for older laptops, aiming to replicate
 the battery life and responsiveness of macOS on Linux.
 
-Version 3 is a complete rewrite of the core from Python to C++,
-with significant improvements in performance and memory usage.
-It serves as the underlying core component of NVazen 2.0.
+Version 4 is a stable update that cuts  out the 'deep sleep'function
+and renew the other part like app nap and RI(Resources Invoke)
 
 ## Core Features
 
@@ -30,13 +29,8 @@ It serves as the underlying core component of NVazen 2.0.
    - Frees CPU and memory, significantly reducing power draw
    - Instantly restores when switched to foreground, seamless
 
-2. Deep Sleep
-   - Automatically switches to deep sleep mode when lid closes
-   - Cuts power to most hardware (CPU, disk, etc.)
-   - Fast wake-up on lid open, balancing power saving and response
-    (recent bug fixed,deep sleep is unable to use for modern laptop,details see WARNING.md)
 
-3. Resource Optimization
+2. Resource Optimization
    - Dynamically adjusts background process priority
    - Intelligently skips applications with high CPU usage
    - Supports whitelist, critical apps are never frozen
@@ -58,7 +52,7 @@ Dependencies:
   Debian/Ubuntu: sudo apt install cmake g++ libglib2.0-dev libsystemd-dev
 
 Build:
-  cd alrm3
+  cd alrm4
   mkdir build && cd build
   cmake .. -DCMAKE_BUILD_TYPE=Release
   make -j$(nproc)
@@ -111,9 +105,9 @@ Config file path: /etc/azen/Azen-ALRM.conf
 
 ## Performance Comparison (v2 Python vs v3 C++)
 
-  Metric          v2 (Python)   v3 (C++)     Improvement
+  Metric          v3 (C++)   v4 (C++)     Improvement
   -------------------------------------------------
-  Startup time    ~500ms        ~50ms        10x
+  Startup time    ~150ms        ~50ms        3x
   Memory usage    14 MB         2-3 MB       5x
   CPU usage       0.5-1%        0.1%         5x
   Response delay  ~100ms        ~10ms        10x
@@ -121,7 +115,7 @@ Config file path: /etc/azen/Azen-ALRM.conf
 
 ## structure
 
-  alrm3/
+  alrm4/
   ├── CMakeLists.txt              Build configuration
   ├── README.txt                  This file
   ├── config/
@@ -129,7 +123,6 @@ Config file path: /etc/azen/Azen-ALRM.conf
   ├── src/
   │   ├── main.cpp                Entry point
   │   ├── app_nap.cpp/.hpp        App Nap core
-  │   ├── sleep_manager.cpp/.hpp  Sleep management
   │   ├── process_monitor.cpp/.hpp Process monitoring
   │   ├── config_parser.cpp/.hpp  Config parser
   │   └── utils.cpp/.hpp          Utilities
@@ -156,6 +149,12 @@ A: Set ENABLE_APP_NAP=false in config file
    Or: sudo systemctl stop azen-alrm.service
 
 ## Changelog
+v4.0.0 (2026-0929)
+  · stable version fix
+  · more controllable
+  · deleted deep sleep function
+  · focus on app nap and RI
+  
 
 v3.0.0 (2026-09)
   · Rewritten from Python to C++17
