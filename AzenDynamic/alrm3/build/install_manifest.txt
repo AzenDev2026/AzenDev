@@ -1,2 +1,0 @@
-/usr/local/bin/alrm
-/etc/azen/Azen-ALRM.conf
