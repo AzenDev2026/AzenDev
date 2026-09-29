@@ -1,58 +1,52 @@
-// SPDX-License-Identifier: GPL-3.0
-// Copyright (C) 2026 白企 Whitent / Azen Project
-//
-// Azen Project - alrm3 配置文件解析器
-
-#pragma once
+#ifndef ALRM_CONFIG_PARSER_HPP
+#define ALRM_CONFIG_PARSER_HPP
 
 #include <string>
+#include <vector>
 
-namespace azen {
-namespace alrm3 {
+namespace alrm {
 
-/**
- * @brief 配置结构体
- */
 struct Config {
-    // 电池阈值
-    int battery_low = 20;       // 低电量阈值(%)
-    int battery_critical = 10;  // 危险电量阈值(%)
+    // 电池管理
+    int battery_low = 20;
+    int battery_critical = 10;
 
-    // 温度阈值(摄氏度)
+    // 温度管理
     int temp_warn = 75;
     int temp_critical = 85;
 
-    // 睡眠行为
-    int sleep_delay = 5;        // 进入睡眠前的延迟(秒)
-    bool prefer_deep_sleep = false;  // 是否优先 deep(S3) 睡眠
+    // 调度
+    int scan_interval = 5;
+
+    // AppNap
+    bool enable_app_nap = true;
+    int cpu_threshold = 20;
+    int freeze_timeout = 30;
+    std::vector<std::string> whitelist;
 
     // 日志
     bool verbose = false;
+
+    // 综合判断：是否处于性能模式
+    bool is_performance_mode() const {
+        return battery_low > 0 && battery_critical > 0;
+    }
 };
 
-/**
- * @brief 配置文件解析器
- */
 class ConfigParser {
 public:
-    ConfigParser();
-    ~ConfigParser();
+    ConfigParser() = default;
 
-    /**
-     * @brief 从文件加载配置
-     * @param path 配置文件路径
-     * @return 成功返回 true
-     */
-    bool load(const std::string& path);
+    // 加载配置文件，成功返回 true
+    bool load(const std::string& path = "/etc/azen-alrm/Azen-ALRM.conf");
 
-    /**
-     * @brief 获取配置
-     */
+    // 获取解析结果
     const Config& get() const { return config_; }
 
 private:
     Config config_;
 };
 
-}  // namespace alrm3
-}  // namespace azen
+} // namespace alrm
+
+#endif // ALRM_CONFIG_PARSER_HPP
