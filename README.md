@@ -48,10 +48,6 @@ Built on Arch Linux, featuring:
 - App Nap & safe sleep-mode selection
 - Privacy-first: no telemetry
 
-> **Known issue — fixed on `main`:** the ALRM `deep` sleep mode can leave
-> some laptops (e.g. Dell XPS 13) unable to resume after the lid is closed.
-> The current source prefers `s2idle` for every mode and power state.
-> See [AzenDynamic/alrm3/WARNING.md](AzenDynamic/alrm3/WARNING.md).
 
 ---
 
