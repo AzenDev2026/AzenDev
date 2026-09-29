@@ -17,7 +17,6 @@ include_directories(${GLIB_INCLUDE_DIRS} ${SYSTEMD_INCLUDE_DIRS})
 set(SOURCES
     src/main.cpp
     src/app_nap.cpp
-    src/sleep_manager.cpp
     src/process_monitor.cpp
     src/config_parser.cpp
     src/utils.cpp
