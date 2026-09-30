@@ -1,0 +1,3 @@
+/home/admin/Desktop/DeepTer/build/CMakeFiles/deepter.dir
+/home/admin/Desktop/DeepTer/build/CMakeFiles/edit_cache.dir
+/home/admin/Desktop/DeepTer/build/CMakeFiles/rebuild_cache.dir

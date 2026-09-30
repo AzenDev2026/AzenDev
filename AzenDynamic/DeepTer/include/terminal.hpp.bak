@@ -1,0 +1,248 @@
+#pragma once
+#include <string>
+#include <vector>
+#include <deque>
+#include <sstream>
+#include <algorithm>
+#include <cstdio>
+#include <unistd.h>
+#include <ftxui/component/component.hpp>
+#include <ftxui/component/screen_interactive.hpp>
+#include <ftxui/dom/elements.hpp>
+#include "colors.hpp"
+#include "logo.hpp"
+#include "sysinfo.hpp"
+
+namespace deepter {
+
+using namespace ftxui;
+
+class Terminal {
+public:
+    Terminal() {
+        prompt_color_ = fg_by_name("light_white");
+        prompt_color_name_ = "light_white";
+        prompt_symbol_ = "➜ ";
+    }
+
+    // ── 启动主循环 ────────────────────────────────────────
+    void run() {
+        auto screen = ScreenInteractive::Fullscreen();
+        std::string input;
+        auto input_component = Input(&input, "");
+
+        auto root = Renderer(input_component, [&] {
+            return vbox({
+                render_header(),
+                separator(),
+                render_output(),
+                render_prompt(input),
+            }) | border;
+        });
+
+        input_component |= CatchEvent([&](Event event) {
+            if (event == Event::Return) {
+                execute(input);
+                input.clear();
+                return true;
+            }
+            return false;
+        });
+
+        screen.Loop(input_component);
+    }
+
+private:
+    std::string prompt_color_;
+    std::string prompt_color_name_;
+    std::string prompt_symbol_;
+    std::string cwd_ = home_dir();
+    std::deque<std::string> output_;
+    static constexpr size_t kMaxOutput = 500;
+
+    // ── 输出缓存 ─────────────────────────────────────────
+    void push_output(const std::string& line) {
+        output_.push_back(line);
+        while (output_.size() > kMaxOutput) output_.pop_front();
+    }
+
+    void push_multiline(const std::string& text) {
+        std::istringstream iss(text);
+        std::string line;
+        while (std::getline(iss, line)) push_output(line);
+    }
+
+    // ── 头部（logo + 系统信息）────────────────────────────
+    Element render_header() {
+        auto logo = colored_logo();
+        Elements logo_lines;
+        for (auto& l : logo) logo_lines.push_back(text(l));
+
+        auto sys = sysinfo_lines();
+        Elements sys_lines;
+        for (auto& l : sys) sys_lines.push_back(text(l));
+
+        return hbox({
+                   vbox(std::move(logo_lines)) | size(WIDTH, EQUAL, 46),
+                   separator(),
+                   vbox(std::move(sys_lines)) | flex,
+               }) | border;
+    }
+
+    std::vector<std::string> sysinfo_lines() {
+        auto mem = memory_info();
+        auto disk = disk_info();
+        return {
+            "=== SYSTEM INFO ===",
+            "  OS:      " + os_name(),
+            "  Kernel:  " + kernel_version(),
+            "  Arch:    " + arch_name(),
+            "  Uptime:  " + uptime_str(),
+            "",
+            "=== USER INFO ===",
+            "  User:    " + current_user() + "@" + host_name(),
+            "  Shell:   " + shell_path(),
+            "  Home:    " + home_dir(),
+            "",
+            "=== HARDWARE ===",
+            "  CPU:     " + cpu_name(),
+            "  Cores:   " + std::to_string(cpu_cores()) + " logical",
+            "  Memory:  " + bytes_to_human(mem.total) +
+                "  (" + std::to_string(mem.percent) + "% used)",
+            "  Disk /:  " + disk.total + "  (" +
+                std::to_string(disk.percent) + "% used)",
+            "",
+            "=== NETWORK ===",
+            "  Host:    " + host_name(),
+            "  IP:      " + net_ip(),
+            "  MAC:     " + net_mac(),
+        };
+    }
+
+    // ── 输出区 ───────────────────────────────────────────
+    Element render_output() {
+        Elements lines;
+        for (auto& l : output_) lines.push_back(text(l));
+        return vbox(std::move(lines)) | flex;
+    }
+
+    // ── 提示符 ───────────────────────────────────────────
+    std::string display_cwd() const {
+        std::string home = home_dir();
+        if (cwd_.rfind(home, 0) == 0) return "~" + cwd_.substr(home.size());
+        return cwd_;
+    }
+
+    Element render_prompt(const std::string& input) {
+        return hbox({
+            text("[" + display_cwd() + "] " + prompt_symbol_),
+            text(input) | flex,
+        });
+    }
+
+    // ── 执行命令 ─────────────────────────────────────────
+    void execute(const std::string& raw_cmd) {
+        std::string cmd = shell_trim(raw_cmd);
+        if (cmd.empty()) return;
+
+        push_output("[" + display_cwd() + "] " + prompt_symbol_ + cmd);
+
+        // 别名
+        if (cmd == "exit") cmd = "quit";
+        else if (cmd == "clear") cmd = "cls";
+
+        // 内建命令
+        if (cmd == "quit" || cmd == "q") {
+            push_output("Goodbye!");
+            std::exit(0);
+        }
+        if (cmd == "cls") { output_.clear(); return; }
+        if (cmd == "help") { show_help(); return; }
+        if (cmd == "logo") {
+            for (auto& l : colored_logo()) push_output(l);
+            return;
+        }
+        if (cmd == "sysinfo") {
+            for (auto& l : sysinfo_lines()) push_output(l);
+            return;
+        }
+        if (cmd == "aliases") {
+            push_output("exit  -> quit");
+            push_output("clear -> cls");
+            return;
+        }
+        if (cmd == "refresh") { push_output("✓ System information refreshed!"); return; }
+        if (cmd == "colors") { show_colors(); return; }
+
+        // pcc 改色
+        if (cmd.rfind("pcc ", 0) == 0) {
+            std::string name = shell_trim(cmd.substr(4));
+            if (is_valid_color(name)) {
+                prompt_color_ = fg_by_name(name);
+                prompt_color_name_ = name;
+                push_output("✓ Prompt color changed to '" + name + "'");
+            } else {
+                push_output("✗ Invalid color: '" + name + "'");
+            }
+            return;
+        }
+
+        // cd
+        if (cmd.rfind("cd", 0) == 0) {
+            std::string target = shell_trim(cmd.size() > 2 ? cmd.substr(2) : "");
+            if (target.empty()) target = home_dir();
+            if (target == "-") { push_output(cwd_); return; }
+            std::string new_dir;
+            if (!target.empty() && target[0] == '~')
+                new_dir = home_dir() + target.substr(1);
+            else if (!target.empty() && target[0] == '/')
+                new_dir = target;
+            else
+                new_dir = cwd_ + "/" + target;
+
+            if (chdir(new_dir.c_str()) == 0) {
+                char buf[4096];
+                if (getcwd(buf, sizeof(buf))) cwd_ = buf;
+                push_output("[" + display_cwd() + "] ->");
+            } else {
+                push_output("cd: no such file or directory: " + target);
+            }
+            return;
+        }
+
+        // 透传系统命令
+        std::string full = "cd \"" + cwd_ + "\" && ( " + cmd + " ) 2>&1";
+        push_multiline(run_pipe(full));
+    }
+
+    // ── 帮助 ─────────────────────────────────────────────
+    void show_help() {
+        const std::vector<std::string> help = {
+            "Available Commands:",
+            "  help            - Show this help message",
+            "  exit, quit, q   - Exit the terminal",
+            "  clear, cls      - Clear screen",
+            "  logo            - Display the ASCII logo",
+            "  sysinfo         - Display system information",
+            "  aliases         - Show available aliases",
+            "  refresh         - Refresh system information",
+            "  colors          - Show available prompt colors",
+            "  pcc [color]     - Change prompt color (e.g. pcc blue)",
+            "  cd <dir>        - Change current directory",
+            "  <anything else> - Executed in system shell",
+            "",
+            "Aliases:  exit->quit   clear->cls",
+        };
+        for (auto& l : help) push_output(l);
+    }
+
+    void show_colors() {
+        push_output("Available Prompt Colors:");
+        for (auto& kv : named_colors()) {
+            std::string star = (kv.first == prompt_color_name_) ? " ★" : "";
+            push_output("  " + kv.first + star);
+        }
+    }
+};
+
+} // namespace deepter
