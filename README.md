@@ -39,7 +39,7 @@ Azen is a project with two parts:
 
 ##  Latest Release
 
-**NVazen 2.0lts.1H2609**
+**NVazen Rolling**
 
 Built on Arch Linux, featuring:
 
