@@ -1,6 +1,7 @@
 # NVazen™ / Azen™
 
-<img align="right" width="110" height="110" src="https://raw.githubusercontent.com/AzenDev2026/AzenDev/main/assets/icons/icon2.png">
+<img width="2560" height="1600" alt="image" src="https://github.com/user-attachments/assets/5e433132-4650-4849-b691-bb723b8682be" />
+
 
 > A modern Linux distribution and software ecosystem for modern laptop.
 
