@@ -11,6 +11,8 @@ the **NVazen / Azen** operating system and the **Azen Dynamic** software ecosyst
 [![License: GPL v3](https://img.shields.io/badge/License-GPLv3-orange.svg)](https://www.gnu.org/licenses/gpl-3.0)
 [![Website](https://img.shields.io/badge/Website-azen.dev-blue)](https://azen.dev)
 [![GitHub](https://img.shields.io/badge/GitHub-AzenDev2026-black)](https://github.com/AzenDev2026/AzenDev)
+![Linux](https://img.shields.io/badge/Linux-FCC624?logo=linux&logoColor=black)
+![Python](https://img.shields.io/badge/Python-3776AB?logo=python&logoColor=white)
 
 ---
 
