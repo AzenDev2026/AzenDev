@@ -14,7 +14,7 @@ chmod +x sysfetch.py
 python 3.12 +
 
 ## others
-small tux ascii logo to use
+small tux ascii logo to use （turn into the code mode not preview)
      .--. 
     |o_o |
     |:_/ |
@@ -25,3 +25,14 @@ small tux ascii logo to use
  ## rules
  1.the ascii.txt maxium limit is 100 lines of logo
  2.only replace the path in conf.txt
+
+ ## customize
+ 1.change the path in conf.txt {ascii-logo},remember it must be a .txt,example:
+ "
+ {ascii-logo} : lightblue
+ /path/you/want/to/put/ascii.txt
+
+ {sys-info}
+ /etc/os-release
+ "
+ 
