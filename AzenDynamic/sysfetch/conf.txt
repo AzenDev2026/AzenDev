@@ -1,0 +1,5 @@
+{ascii-logo} : blue
+/home/admin/Desktop/sysfetch/ascii.txt
+
+{sys-info} :
+/etc/os-release
