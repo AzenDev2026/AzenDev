@@ -41,7 +41,7 @@ Written in C++17. See [alrm3/README.md](alrm3/README.md) for details.
 > laptops (e.g. Dell XPS 13) unable to resume. ALRM 3 therefore uses
 > `s2idle` for every mode and power state, and only falls back to `deep`
 > on hardware that does not support `s2idle` at all.
-> Details: [alrm3/WARNING.md](alrm3/WARNING.md).
+> Details: [alrm3/WARNING.md](alrm4/WARNING.md).
 
 ---
 
