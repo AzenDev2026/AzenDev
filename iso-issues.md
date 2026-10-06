@@ -1,5 +1,6 @@
 # ISO
-In 2026 oct 6 9:33 we have finally made out an ISO image file  
+> made by Whitent  
+In 2026 oct 6 9:33 
 [download here](https://archive.org/download/nvazen-2026.10.06-x-86-64-1)  
 ## Known issues
 -only support CH language in the system installer and logs
