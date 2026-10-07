@@ -1,11 +1,13 @@
 # NVazen™ / Azen™
+<img align=right width="100" height="100" alt="arclogo" src="https://github.com/user-attachments/assets/ab1d01d1-f50d-438e-9f5f-9980aa781ced" />
 
 
 > A modern Linux distribution and software ecosystem for modern laptop.
 
 Azen is a project under **白企 Whitent**, organized as two product lines:
 the **NVazen / Azen** operating system and the **Azen Dynamic** software ecosystem.
-<img width="2560" height="1600" alt="image" src="https://github.com/user-attachments/assets/05eee930-072b-4c85-89b5-d6642a25e154" />
+<img width="2560" height="1600" alt="Screenshot_20261007_113341" src="https://github.com/user-attachments/assets/da2ffc81-03c2-42ee-92fa-2c4b29215e8d" />
+
 
 
 [![License: GPL v3](https://img.shields.io/badge/License-GPLv3-orange.svg)](https://www.gnu.org/licenses/gpl-3.0)
