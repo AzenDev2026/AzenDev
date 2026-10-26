@@ -1,0 +1,12 @@
+{
+    "KPlugin": {
+        "Id": "freeze-manager",
+        "Name": "Freeze Manager Bridge",
+        "Description": "Reports window minimize/desktop changes via D-Bus",
+        "Version": "1.1",
+        "License": "MIT"
+    },
+    "X-Plasma-API": "javascript",
+    "X-Plasma-MainScript": "contents/code/main.js",
+    "KPackageStructure": "KWin/Script"
+}
