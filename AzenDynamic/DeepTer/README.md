@@ -1,4 +1,4 @@
-# DeppTermianl
+# DeppTerminal (out dated)
 DeepTermianl is a termianl tools that provide a better TUI for original termianl  
 WARNING: it is not usable for now, we are still fixing the problem  
 ## main features
@@ -9,4 +9,5 @@ if you want to check out other usable tool for your terminal
 check out [sysfetch](https://github.com/AzenDev2026/AzenDev/tree/main/AzenDynamic/sysfetch)  
 see [LICENSE](LICENSE)
 ## contact
--email: zitingliang18@gmail.com
+-email: zitingliang18@gmail.com  
+use the new [DeepTerminal](https://github.com/AzenDev2026/DeepTerminal) repository
