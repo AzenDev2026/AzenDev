@@ -1,7 +1,7 @@
 name: Invite AI Contributor
 
 on:
-  workflow_dispatch: # 允许你在网页上手动点击运行
+  workflow_dispatch: # 允许网页手动触发
 
 jobs:
   make-commit:
@@ -10,16 +10,16 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
 
-      - name: Let DeepSeek work for me
+      - name: Let DeepSeek Org work for me
         run: |
-          # 1. 配置 AI 的身份信息
-          git config --global user.name "deepseek-open-source[bot]"
-          git config --global user.email "175510614+deepseek-open-source[bot]@users.noreply.github.com"
+          # 1. 直接配置为 DeepSeek 官方组织名字和公开对外邮箱
+          git config --global user.name "deepseek-ai"
+          git config --global user.email "service@deepseek.com"
           
-          # 2. 随便修改一个文件（比如创建一个叫 deepseek.txt 的文件）
-          echo "DeepSeek updated this file for you!" > deepseek.txt
+          # 2. 随便修改一个文件（为了触发新的提交）
+          echo "DeepSeek Official updated this!" >> deepseek.txt
           
-          # 3. 提交并推送到仓库
+          # 3. 提交并推送
           git add deepseek.txt
-          git commit -m "chore: optimized by DeepSeek R1"
+          git commit -m "chore: code review by deepseek-ai org"
           git push
