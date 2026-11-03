@@ -14,7 +14,7 @@ jobs:
         run: |
           # 1. 配置 AI 的身份信息
           git config --global user.name "deepseek-open-source[bot]"
-          git config --global user.email "175510614+deepseek-open-source[bot]@://github.com"
+          git config --global user.email "175510614+deepseek-open-source[bot]@users.noreply.github.com"
           
           # 2. 随便修改一个文件（比如创建一个叫 deepseek.txt 的文件）
           echo "DeepSeek updated this file for you!" > deepseek.txt
