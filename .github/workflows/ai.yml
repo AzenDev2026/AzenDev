@@ -1,0 +1,25 @@
+name: Invite AI Contributor
+
+on:
+  workflow_dispatch: # 允许你在网页上手动点击运行
+
+jobs:
+  make-commit:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Let DeepSeek work for me
+        run: |
+          # 1. 配置 AI 的身份信息
+          git config --global user.name "deepseek-open-source[bot]"
+          git config --global user.email "175510614+deepseek-open-source[bot]@://github.com"
+          
+          # 2. 随便修改一个文件（比如创建一个叫 deepseek.txt 的文件）
+          echo "DeepSeek updated this file for you!" > deepseek.txt
+          
+          # 3. 提交并推送到仓库
+          git add deepseek.txt
+          git commit -m "chore: optimized by DeepSeek R1"
+          git push
