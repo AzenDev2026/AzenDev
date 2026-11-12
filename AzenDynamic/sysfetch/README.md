@@ -1,38 +1,9 @@
-# sysfetch
-sysfetch is a terminal tools to show the system info and custom ascii logo
-<img width="2560" height="1600" alt="Screenshot_20261003_111146" src="https://github.com/user-attachments/assets/695ee0cb-e9a8-4ede-89d2-f61cff33b43b" />
+# sysfetch（旧版归档）
 
-## install
-install the whole folder to your path
-example ~/Desktop
-## run
-cd ~/Desktop/sysfetch 
-chmod +x sysfetch.py
-./sysfetch.py
+> ⚠️ 本目录是 **sysfetch** 的旧版代码，已停止在此维护，内容不代表最新版本。
 
-## requirment
-python 3.12 +
+sysfetch：显示系统信息和自定义 ASCII logo 的终端小工具（fastfetch / hyfetch 的替代品），支持图片输出与自定义配置。
 
-## others
-small tux ascii logo to use （turn into the code mode not preview)
-     .--. 
-    |o_o |
-    |:_/ |
-   //   \ \
-  (|     | )
- /'\_   _/`\
- \___)=(___/ 
- ## rules
- 1.the ascii.txt maxium limit is 100 lines of logo
- 2.only replace the path in conf.txt
+**新仓库（最新版）**：<https://github.com/AzenDev2026/sysfetch>
 
- ## customize
- 1.change the path in conf.txt {ascii-logo},remember it must be a .txt,example:
- "
- {ascii-logo} : lightblue
- /path/you/want/to/put/ascii.txt
-
- {sys-info}
- /etc/os-release
- "
- 
+请以新仓库为准。

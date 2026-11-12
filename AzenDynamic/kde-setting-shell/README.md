@@ -1,85 +1,9 @@
-# KDE Settings Shell
+# kde-setting-shell（旧版归档）
 
-A Windows 11–style settings shell for KDE Plasma, written in Python + PyQt6.
+> ⚠️ 本目录是 NVazen 设置中心的旧版（Python + PyQt6 实现，Windows 11 风格），已停止在此维护，内容不代表最新版本。
 
-> **⚠️ Early Development — Not Stable**
->
-> This project is in early development. Features are incomplete, some may not
-> work on your system, and the UI may change without notice. Not recommended
-> for daily use yet.
+一个替代 KDE Plasma 原生系统设置的界面外壳：左侧边栏 + 分类选项卡（系统 / 显示 / 个性化 / 用户 / 硬件等），底层仍然调用系统命令，界面仿 Windows 11 设置风格。
 
----
+**新仓库（最新版）**：<https://github.com/AzenDev2026/NVazenSettings>
 
-## Features
-
-- Windows 11–like UI
-- Runs system commands in the background (`nmcli`, `brightnessctl`,
-  `bluetoothctl`, `kscreen-doctor`, `plasma-apply-*`, …)
-- Complex settings hand off to the native KDE KCM instead of
-  reimplementing them
-- Languages: Chinese, English, Japanese, French, German
-
----
-
-## Requirements
-
-- KDE Plasma 6 (Wayland or X11)
-- Python 3.10+
-- PyQt6
-- System commands: `brightnessctl`, `wpctl`, `nmcli`, `bluetoothctl`,
-  `kscreen-doctor`, `plasma-apply-lookandfeel`, `plasma-apply-wallpaperimage`,
-  `qdbus6`, `upower` or `acpi`
-
-Arch example:
-
-```bash
-sudo pacman -S brightnessctl wireplumber networkmanager bluez bluez-utils \
-               kscreen plasma-workspace qt6-tools upower
-```
-
----
-
-## Install
-
-Clone this repository, then run the installer from the `kde-setting-shell` directory:
-
-```bash
-git clone https://github.com/AzenDev2026/AzenDev.git
-cd AzenDev/AzenDynamic/kde-setting-shell
-chmod +x install.sh
-./install.sh
-
-`install.sh` creates the `myenv/` virtual environment, installs PyQt6, and
-writes a desktop entry to `~/.local/share/applications/`. Re-running it is safe.
-
-## Run
-
-```bash
-./launch.sh
-```
-
-…or pick **System Settings** from the application menu.
-
-Runtime log: `~/.local/state/kde-setting-shell.log`
-
-> `kde-settings-shell.desktop` in this directory is a **template only** — its
-> `Exec=` path is a placeholder. Use `install.sh` to generate the working copy.
-
----
-
-## Notes
-
-- `sysver.txt` drives the "About this system" panel. Edit `logo_path`, `name`
-  or `version code` there to rebrand it for your own build.
-- The Wi-Fi password is handed to `nmcli` over stdin, never as a command line
-  argument, so it does not show up in `ps`.
-
----
-
-## License
-
-GPLv3 — see [../../LICENSE](../../LICENSE).
-
-Part of the NVazen / Azen ecosystem under 白企 Whitent.
-
-© 2026 白企 Whitent / Azen Project
+新版改用 QML + C++ 启动器，支持中英双语。请以新仓库为准。

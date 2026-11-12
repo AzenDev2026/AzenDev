@@ -54,37 +54,18 @@ Built on Arch Linux, featuring:
 
 ##  Azen Dynamic
 
-**Azen Dynamic** is the software distribution branch of the Azen project. All sub-projects under Azen Dynamic are maintained by the Azen team.
+**Azen Dynamic** is the software distribution branch of the Azen project: system-level tools that improve performance, battery life and usability on Linux laptops.
 
-| Project | Description | Status |
-|---------|-------------|--------|
-| **ALRM** | Azen Laptop Resources Management — App Nap, safe sleep-mode selection, Resource Optimization |  Stable |
-| **ALPRM** | Azen Laptop Power Resources Management — next-gen sleep stack replacement |  In development |
-| **AlreSearch** | System file search engine |  Early test |
-| **Wtml** | Terminal tool  |  Early test |
-| **KDE Setting Shell** | Alternative settings UI for KDE Plasma with a Windows 11-inspired design |  In development |
+> ℹ️ The folders under `AzenDynamic/` are **legacy versions**. Each major sub-project now lives in its own repository:
 
-### ALRM — Azen Laptop Resources Management
+| Sub-project | New repository |
+|---|---|
+| **NAAP** — App Nap technology (successor of ALRM / ALPRM) | [AzenDev2026/NAAP](https://github.com/AzenDev2026/NAAP) |
+| **DeepTerminal** — Qt terminal tool | [AzenDev2026/DeepTerminal](https://github.com/AzenDev2026/DeepTerminal) |
+| **NVazen Settings** — Windows 11-style KDE settings shell | [AzenDev2026/NVazenSettings](https://github.com/AzenDev2026/NVazenSettings) |
+| **sysfetch** — system info terminal tool | [AzenDev2026/sysfetch](https://github.com/AzenDev2026/sysfetch) |
 
-ALRM is our exclusive technology for older laptops:
-
-- **App Nap** — Freezes idle background apps to save CPU & power
-- **Safe sleep modes** — Picks a sleep mode the hardware can actually resume from
-- **Resource Optimization** — Dynamic priority for background processes
-
-### ALPRM — Azen Laptop Power Resources Management
-
-The next generation of ALRM, aiming to replace the system's sleep stack with a unified, Azen-controlled power management framework.
-
-Current progress:
-
--  **Monitoring Layer (C)** — Listens to lid, power button, and D-Bus sleep events
--  **Decision Layer (Rust)** — State machine, permission checks, handoff logs
--  **Execution Layer (C + Rust)** — Freeze processes, switch sleep modes, control hardware
-
-### KDE Setting Shell
-
-A replacement shell for the native KDE Plasma system settings. It provides a cleaner, more modern interface inspired by Windows 11, while keeping the underlying KDE functionality intact.
+See [AzenDynamic/README.md](AzenDynamic/README.md) for the full archive map.
 
 ---
 
@@ -92,8 +73,7 @@ A replacement shell for the native KDE Plasma system settings. It provides a cle
 
 | Folder | Description |
 |--------|-------------|
-| `AzenDynamic/` | Software ecosystem (ALRM, ALPRM, AlreSearch, KDE Setting Shell) |
-| `Wtml/` | Winzer Terminal (early test) |
+| `AzenDynamic/` | Software ecosystem — legacy/archive code (see the redirect table above) |
 | `assets/` | Project assets |
 | `screenshot/` | Screenshots |
 | `issues/` | Issue tracking |
