@@ -4,7 +4,8 @@
 
 Azen is a project under **白企 Whitent**, organized as two product lines:
 the **NVazen / Azen** operating system and the **Azen Dynamic** software ecosystem.
-<img width="2560" height="1600" alt="Screenshot_20261022_201545" src="https://github.com/user-attachments/assets/465a4da4-4e95-4636-af62-6ae4c79729e4" />
+<img width="2560" height="1600" alt="Screenshot_20261112_213157" src="https://github.com/user-attachments/assets/b2933727-1f5c-4625-8263-c56d441730b1" />
+
 
 
 [![License: GPL v3](https://img.shields.io/badge/License-GPLv3-orange.svg)](https://www.gnu.org/licenses/gpl-3.0)
