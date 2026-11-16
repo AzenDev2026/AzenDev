@@ -98,9 +98,9 @@ GPLv3 — see [LICENSE](LICENSE)
 ## Contributors
 
 - [Ziting Liang](https://github.com/AzenDev2026) — creator and maintainer
-- [qianning] — AI coding assistant (bug fixes, documentation, packaging)
+- [DeepSeek](https://www.deepseek.com) — AI coding assistant (bug fixes, documentation, packaging)
 
-AI-assisted commits are marked with an `Assisted-by: Lobe AI` trailer.
+AI-assisted commits are marked with an `Assisted-by: DeepSeek` trailer.
 
 ---
 
